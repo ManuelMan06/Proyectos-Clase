@@ -26,8 +26,8 @@ public class PreguntasAeropuertos {
 			if (fecha.isAfter(a) && fecha.isBefore(b)) {
 				VueloProgramado vProgramado = vuelo.vueloProgramado();
 				String ciudad = vProgramado.ciudadOrigen();
-				Integer billetes = vuelo.numPasajeros;
-				Double precio = vProgramado.precio;
+				Integer billetes = vuelo.numPasajeros();
+				Double precio = vProgramado.precio();
 				if (!contador.containsKey(ciudad)) {
 					contador.put(ciudad, billetes*precio);
 				}
@@ -52,11 +52,11 @@ public class PreguntasAeropuertos {
 		assert Duration.between(a, b).toDays() >= 1 : "El intervalo de tiempo debe ser al menos de un día";
 		
 		return espacioAereo.vuelos().todas().stream()
-				.filter(vuelo ->  vuelo.fechaSalida().atTime(vuelo.horaSalida()).isAfter(A)
+				.filter(vuelo ->  vuelo.fechaSalida().atTime(vuelo.horaSalida()).isAfter(a)
 						&&  vuelo.fechaSalida().atTime(vuelo.horaSalida()).isBefore(b))
 				.collect(Collectors.groupingBy(
 							vuelo -> vuelo.vueloProgramado().ciudadOrigen(),
-							Collectors.summingDouble(vuelo -> vuelo.numPasajeros*vuelo.vueloProgramado().precio)
+							Collectors.summingDouble(vuelo -> vuelo.numPasajeros()*vuelo.vueloProgramado().precio())
 						))
 				.entrySet().stream()
 				.max(Map.Entry.comparingByValue())

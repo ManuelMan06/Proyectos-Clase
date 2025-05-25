@@ -8,7 +8,7 @@ import java.util.Map;
 public class TestBancos {
 	public static void main(String[] args) {
 		
-		Banco banco = Banco.of();
+		Banco banco = Banco.of("../java_v1");
 		PreguntasBancos preguntas = new PreguntasBancos(banco);
 		LocalDate fecha = LocalDate.of(2000, 1, 1);
 		

@@ -1,12 +1,12 @@
 package entrega6.test;
 import us.lsi.aeropuerto.*;
-import entrega6.preguntas.PreguntasAeropuertos
+import entrega6.preguntas.PreguntasAeropuertos;
 import java.time.LocalDateTime;
 
 public class TestAeropuertos {
 	public static void main(String[] args) {
 		
-		EspacioAereo espacioAereo = EspacioAereo.of();
+		EspacioAereo espacioAereo = EspacioAereo.of("../java_v1");
 		PreguntasAeropuertos preguntas = new PreguntasAeropuertos(espacioAereo);
 		
 		String ciudad = preguntas.ciudadAeropuertoMayorFacturacionImperativo(LocalDateTime.of(2015, 10, 1, 0, 0),

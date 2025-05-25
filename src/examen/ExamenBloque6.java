@@ -170,7 +170,6 @@ public class ExamenBloque6 {
 				.map(Libro::titulo)
 				.collect(Collectors.toList());
 				
-		
 	}
 	
 	
